@@ -54,7 +54,7 @@ st.markdown(f"""
         margin-bottom: 15px;
     }}
 
-    /* Títulos de las tarjetas en rojo/rosa fuerte */
+   /* Títulos de las tarjetas en rojo/rosa fuerte */
     .card-title {{
         color: #d11141;
         font-size: 22px;
@@ -62,10 +62,9 @@ st.markdown(f"""
         margin-bottom: 10px;
     }}
 
-    /* Texto interno legible pero sutil */
-    .card-text {{
-    background: white;
-        color: #8b0000;
+    /* Texto interno (incluye listas y mensajes) en NEGRO */
+    .card-text, .stMarkdown p, .stMarkdown li {{
+        color: #000000 !important;
         font-size: 16px;
         line-height: 1.4;
     }}
@@ -142,6 +141,7 @@ else:
         st_lottie(lottie_love, height=150)
 
     st.markdown(f"<p class='titulo' style='font-size: 25px !important;'>¡Nos vemos mañana para el día {dias_juntos + 1}!</p>", unsafe_allow_html=True)
+
 
 
 
