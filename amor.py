@@ -4,10 +4,9 @@ import requests
 import time
 from datetime import date
 
-# --- 1. CONFIGURACIÓN Y ESTILO (OPTIMIZADO PARA MÓVIL) ---
+# --- 1. CONFIGURACIÓN Y ESTILO ---
 st.set_page_config(page_title="Para Daniela ❤️", page_icon="💖", layout="wide")
 
-# Fecha de inicio
 FECHA_INICIO = date(2025, 8, 20) 
 dias_juntos = (date.today() - FECHA_INICIO).days
 
@@ -17,49 +16,62 @@ st.markdown(f"""
         background-color: #ffe4e1;
         background-image: url("https://www.transparenttextures.com/patterns/hearts.png");
     }}
-    /* Título más grande y con sombra para que resalte */
+    /* Títulos Principales - Restaurado el color original */
     .titulo {{
-        font-size: 42px !important;
-        font-weight: 800;
-        color: #b00020; /* Un rojo más fuerte para lectura */
+        font-size: 35px !important;
+        font-weight: bold;
+        color: #d11141; /* Tu rojo original */
         text-align: center;
-        text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
-        margin-bottom: 5px;
+        margin-bottom: 10px;
     }}
-    /* Texto del contador en color oscuro */
     .contador {{
-        font-size: 20px;
-        color: #5d001e;
+        font-size: 18px;
+        color: #8b0000;
         text-align: center;
         margin-bottom: 30px;
-        font-weight: 600;
+        font-style: italic;
     }}
-    /* Ajuste de las tarjetas para que el texto adentro sea legible */
+    /* Tarjetas Blancas */
     .card {{
-        background: rgba(255, 255, 255, 0.95); /* Blanco sólido */
+        background: white;
         padding: 20px;
         border-radius: 15px;
-        box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+        box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
         margin-bottom: 20px;
-        color: #1a1a1a !important; /* Texto casi negro para máximo contraste */
-        line-height: 1.6; /* Espaciado entre líneas */
     }}
-    /* Forzar color negro en las listas de col2 */
-    .stMarkdown p, .stMarkdown li {{
-        color: #1a1a1a !important;
+    /* Títulos de las tarjetas - Restaurado color rosa/rojo */
+    .card h3, .card h2, .card h1 {{
+        color: #d11141 !important;
+    }}
+    /* ESTA ES LA PARTE CLAVE: Texto interno en color oscuro para legibilidad */
+    .stMarkdown p, .stMarkdown li, .stMarkdown span {{
+        color: #2c2c2c !important; /* Gris muy oscuro, casi negro */
         font-size: 17px !important;
+        font-weight: 500;
+    }}
+    /* Botón Centrado */
+    .centrar {{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }}
+    div.stButton > button {{
+        background-color: #ff1493 !important;
+        color: white !important;
+        font-size: 22px !important;
+        border-radius: 50px !important;
+        padding: 15px 40px !important;
+        border: 3px solid white !important;
     }}
     </style>
     """, unsafe_allow_html=True)
 
 def load_lottieurl(url):
-    try:
-        return requests.get(url).json()
+    try: return requests.get(url).json()
     except: return None
 
 lottie_love = load_lottieurl("https://lottie.host/8074d093-5961-460d-9659-380d6b63d0c3/9S0nNf1N63.json")
 
-# --- LÓGICA DE NAVEGACIÓN ---
 if 'paso' not in st.session_state:
     st.session_state.paso = 1
 
@@ -68,7 +80,6 @@ if st.session_state.paso == 1:
     st.markdown('<p class="titulo">Daniela de mi corazón,<br>¿Quieres ser mi San Valentín mañana?</p>', unsafe_allow_html=True)
     st.markdown(f'<p class="contador">Llevamos {dias_juntos} días de aprendizaje y amor...</p>', unsafe_allow_html=True)
     
-    # Botón centrado
     st.markdown('<div class="centrar">', unsafe_allow_html=True)
     if st.button("¡SÍ, ACEPTO! ❤️"):
         st.balloons()
@@ -99,12 +110,11 @@ else:
         st.markdown('<div class="card">', unsafe_allow_html=True)
         st.subheader("🎥 Un video para ti")
         try:
-            # Carga del video local que pusiste en la carpeta
             video_file = open('mi_video.mp4', 'rb')
             video_bytes = video_file.read()
             st.video(video_bytes)
         except:
-            st.warning("Coloca tu video 'mi_video.mp4' en la carpeta para verlo aquí ❤️")
+            st.warning("Coloca 'mi_video.mp4' en la carpeta ❤️")
         st.markdown('</div>', unsafe_allow_html=True)
 
         st.markdown('<div class="card">', unsafe_allow_html=True)
@@ -123,4 +133,3 @@ else:
         st_lottie(lottie_love, height=200)
 
     st.markdown(f"<h3 style='text-align: center; color: #d11141;'>¡Nos vemos mañana para celebrar el día {dias_juntos + 1}!</h3>", unsafe_allow_html=True)
-
