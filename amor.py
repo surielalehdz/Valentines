@@ -123,3 +123,4 @@ else:
         st_lottie(lottie_love, height=200)
 
     st.markdown(f"<h3 style='text-align: center; color: #d11141;'>¡Nos vemos mañana para celebrar el día {dias_juntos + 1}!</h3>", unsafe_allow_html=True)
+
