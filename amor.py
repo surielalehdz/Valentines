@@ -64,7 +64,7 @@ st.markdown(f"""
 
     /* Texto interno legible pero sutil */
     .card-text {{
-        color: #d11141;
+        color: #8b0000;
         font-size: 16px;
         line-height: 1.4;
     }}
@@ -102,13 +102,13 @@ else:
     with col1:
         st.markdown(f'''<div class="card">
             <div class="card-title">Nuestra canción</div>
-            <div class="card-text">Esta melodía siempre me recuerda lo que siento por ti.</div>
+            <div class="card-text">Esta canción siempre me recuerda lo que siento por ti, espero nunca la olvides.</div>
         </div>''', unsafe_allow_html=True)
         st.video("https://www.youtube.com/watch?v=oSpT9pNyoBI") 
 
     with col2:
         st.markdown(f'''<div class="card">
-            <div class="card-title">Un video para ti</div>
+            <div class="card-title">Un recuerdo que guardo mucho en mi corazón❤️</div>
         </div>''', unsafe_allow_html=True)
         try:
             video_file = open('mi_video.mp4', 'rb')
@@ -125,7 +125,7 @@ else:
 
     with col3:
         st.markdown(f'''<div class="card">
-            <div class="card-title">¿Por qué tú?</div>
+            <div class="card-title">¿Por qué tú?❤️</div>
             <div class="card-text">
                 • Tus abrazos son mi lugar favorito.<br>
                 • Nadie me hace reír como tú.<br>
@@ -141,4 +141,5 @@ else:
         st_lottie(lottie_love, height=150)
 
     st.markdown(f"<p class='titulo' style='font-size: 25px !important;'>¡Nos vemos mañana para el día {dias_juntos + 1}!</p>", unsafe_allow_html=True)
+
 
