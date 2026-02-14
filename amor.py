@@ -4,7 +4,7 @@ import requests
 import time
 from datetime import date
 
-# --- 1. CONFIGURACIÓN Y ESTILO ---
+# --- 1. CONFIGURACIÓN Y ESTILO (ESTILO ORIGINAL RECUPERADO) ---
 st.set_page_config(page_title="Para Daniela ❤️", page_icon="💖", layout="wide")
 
 FECHA_INICIO = date(2025, 8, 20) 
@@ -17,64 +17,56 @@ st.markdown(f"""
         background-image: url("https://www.transparenttextures.com/patterns/hearts.png");
     }}
     
-    /* Título Principal Gigante */
+    /* Títulos Principales en Rojo */
     .titulo {{
-        font-size: 45px !important;
-        font-weight: 900;
-        color: #d11141 !important;
+        font-size: 40px !important;
+        font-weight: bold;
+        color: #d11141;
         text-align: center;
-        margin-bottom: 5px;
-        text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+        margin-bottom: 0px;
     }}
     
     .contador {{
-        font-size: 20px;
+        font-size: 18px;
         color: #8b0000;
         text-align: center;
         margin-bottom: 30px;
         font-style: italic;
-        font-weight: 600;
     }}
 
-    /* Tarjetas */
-    .card {{
-        background: white;
-        padding: 25px;
-        border-radius: 20px;
-        box-shadow: 4px 4px 15px rgba(0,0,0,0.1);
-        margin-bottom: 20px;
-    }}
-
-    /* Títulos de las tarjetas - ROSA FUERTE Y GRANDES */
-    .card h1, .card h2, .card h3, .card h4 {{
-        color: #ff1493 !important; /* Rosa fuerte tipo DeepPink */
-        font-size: 28px !important;
-        font-weight: 800 !important;
-        margin-bottom: 15px !important;
-    }}
-
-    /* Texto de los mensajes y listas - OSCURO PARA LEER BIEN */
-    .stMarkdown p, .stMarkdown li {{
-        color: #333333 !important;
-        font-size: 18px !important;
-        line-height: 1.5 !important;
-        font-weight: 400 !important;
-    }}
-
-    .centrar {{
-        display: flex;
-        justify-content: center;
-        width: 100%;
-    }}
-
+    /* Botón a la izquierda (según tu captura) */
     div.stButton > button {{
         background-color: #ff1493 !important;
         color: white !important;
-        font-size: 24px !important;
+        font-size: 20px !important;
         font-weight: bold !important;
-        padding: 18px 50px !important;
-        border-radius: 50px !important;
-        border: 3px solid white !important;
+        padding: 10px 30px !important;
+        border-radius: 30px !important;
+        border: 2px solid white !important;
+    }}
+
+    /* Tarjetas Blancas con Títulos Rojos */
+    .card {{
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+        margin-bottom: 15px;
+    }}
+
+    /* Títulos de las tarjetas en rojo/rosa fuerte */
+    .card-title {{
+        color: #d11141;
+        font-size: 22px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }}
+
+    /* Texto interno legible pero sutil */
+    .card-text {{
+        color: #333333;
+        font-size: 16px;
+        line-height: 1.4;
     }}
     </style>
     """, unsafe_allow_html=True)
@@ -90,59 +82,51 @@ if 'paso' not in st.session_state:
 
 # --- PANTALLA 1: LA PROPUESTA ---
 if st.session_state.paso == 1:
-    st.markdown('<p class="titulo">Daniela de mi corazón,<br>¿Quieres ser mi San Valentín mañana?</p>', unsafe_allow_html=True)
+    st.markdown('<p class="titulo">Daniela de mi corazón,</p>', unsafe_allow_html=True)
+    st.markdown('<p class="titulo">¿Quieres ser mi San Valentín mañana?</p>', unsafe_allow_html=True)
     st.markdown(f'<p class="contador">Llevamos {dias_juntos} días de aprendizaje y amor...</p>', unsafe_allow_html=True)
     
-    st.markdown('<div class="centrar">', unsafe_allow_html=True)
+    # Botón a la izquierda como en tu imagen
     if st.button("¡SÍ, ACEPTO! ❤️"):
         st.balloons()
         time.sleep(1)
         st.session_state.paso = 2
         st.rerun()
-    st.markdown('</div>', unsafe_allow_html=True)
 
 # --- PANTALLA 2: EL PANEL ROMÁNTICO ---
 else:
     st.markdown('<p class="titulo">¡Mañana es nuestro día! 😍</p>', unsafe_allow_html=True)
     
-    col1, col2 = st.columns([1, 1])
+    # Usamos 3 columnas para que las tarjetas se vean pequeñas y ordenadas como en tu imagen
+    col1, col2, col3 = st.columns(3)
 
     with col1:
-        st.markdown('<div class="card">', unsafe_allow_html=True)
-        st.subheader("🎵 Nuestra canción")
+        st.markdown(f'''<div class="card">
+            <div class="card-title">Nuestra canción</div>
+            <div class="card-text">Esta melodía siempre me hace pensar en ti.</div>
+        </div>''', unsafe_allow_html=True)
         st.video("https://www.youtube.com/watch?v=oSpT9pNyoBI") 
-        st.markdown('</div>', unsafe_allow_html=True)
-
-        st.markdown('<div class="card">', unsafe_allow_html=True)
-        st.subheader("💌 Mensaje Secreto")
-        with st.expander("Haz clic para leer..."):
-            st.write("Amor, feliz día. Sé que hemos pasado por momentos difíciles últimamente, pero te sigo eligiendo hoy y todos los días. Gracias por querer luchar por lo nuestro junto a mí. Hagamos que este día sea un recordatorio de por qué empezamos y de todo lo bueno que nos falta vivir. Te quiero mucho")
-        st.markdown('</div>', unsafe_allow_html=True)
 
     with col2:
-        st.markdown('<div class="card">', unsafe_allow_html=True)
-        st.subheader("🎥 Un video para ti")
-        try:
-            video_file = open('mi_video.mp4', 'rb')
-            video_bytes = video_file.read()
-            st.video(video_bytes)
-        except:
-            st.warning("Coloca 'mi_video.mp4' en la carpeta ❤️")
-        st.markdown('</div>', unsafe_allow_html=True)
+        st.markdown(f'''<div class="card">
+            <div class="card-title">Mensaje Secreto</div>
+            <div class="card-text">Haz clic abajo para leer lo que siento...</div>
+        </div>''', unsafe_allow_html=True)
+        with st.expander("Abrir mensaje..."):
+            st.write("Amor, feliz día. Sé que hemos pasado por momentos difíciles últimamente, pero te sigo eligiendo hoy y todos los días. Gracias por querer luchar por lo nuestro junto a mí.")
 
-        st.markdown('<div class="card">', unsafe_allow_html=True)
-        st.subheader("❤️ ¿Por qué me gustas?")
-        st.write(f"En estos {dias_juntos} días he aprendido que:")
-        st.write("* Tus abrazos son mi lugar favorito.")
-        st.write("* Nadie me hace reír como tú.")
-        st.write("* Eres mi apoyo incondicional.")
-        st.write("* Te deseo.")
-        st.write("* Eres la mamá de Rayo jaja.")
-        st.write("* No dejo de pensar en ti.")
-        st.write("* Quiero ser feliz contigo :).")
-        st.markdown('</div>', unsafe_allow_html=True)
-        
+    with col3:
+        st.markdown(f'''<div class="card">
+            <div class="card-title">¿Por qué tú?</div>
+            <div class="card-text">
+                • Tus abrazos son mi lugar favorito.<br>
+                • Nadie me hace reír como tú.<br>
+                • Eres mi apoyo incondicional.<br>
+                • Eres la mamá de Rayo jaja.
+            </div>
+        </div>''', unsafe_allow_html=True)
+
     if lottie_love:
-        st_lottie(lottie_love, height=200)
+        st_lottie(lottie_love, height=150)
 
-    st.markdown(f"<h1 style='text-align: center; color: #ff1493; font-weight: 900;'>¡Nos vemos mañana para celebrar el día {dias_juntos + 1}!</h1>", unsafe_allow_html=True)
+    st.markdown(f"<p class='titulo' style='font-size: 25px !important;'>¡Nos vemos mañana para el día {dias_juntos + 1}!</p>", unsafe_allow_html=True)
