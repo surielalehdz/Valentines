@@ -93,41 +93,51 @@ if st.session_state.paso == 1:
         st.session_state.paso = 2
         st.rerun()
 
-# --- PANTALLA 2: EL PANEL ROMÁNTICO (COMO LA IMAGEN) ---
+# --- PANTALLA 2: EL PANEL ROMÁNTICO ---
 else:
-    st.markdown('<p class="titulo">¡Mañana es nuestro dia! 😍</p>', unsafe_allow_html=True)
+    st.markdown('<p class="titulo">¡Mañana es nuestro día! 😍</p>', unsafe_allow_html=True)
     
-    col1, col2 = st.columns(2)
+    col1, col2, col3 = st.columns(3)
 
     with col1:
-        st.markdown('<div class="card">', unsafe_allow_html=True)
-        st.subheader("🎵 Nunca la olvides")
-        st.write("Canciones que me recuerdan a ti:")
-        # Puedes poner un link real de Spotify o YouTube aquí
-        st.video("https://www.youtube.com/watch?v=oSpT9pNyoBI&list=RDoSpT9pNyoBI&start_radio=1") 
-        st.markdown('</div>', unsafe_allow_html=True)
-
-        st.markdown('<div class="card">', unsafe_allow_html=True)
-        st.subheader("💌 Mensaje Secreto")
-        with st.expander("Haz clic para leer..."):
-            st.write("Amor, feliz día. Sé que hemos pasado por momentos difíciles últimamente, pero te sigo eligiendo hoy y todos los días. Gracias por querer luchar por lo nuestro junto a mí. Hagamos que este día sea un recordatorio de por qué empezamos y de todo lo bueno que nos falta vivir. Te quiero mucho")
-        st.markdown('</div>', unsafe_allow_html=True)
+        st.markdown(f'''<div class="card">
+            <div class="card-title">Nuestra canción</div>
+            <div class="card-text">Esta melodía siempre me recuerda lo que siento por ti.</div>
+        </div>''', unsafe_allow_html=True)
+        st.video("https://www.youtube.com/watch?v=oSpT9pNyoBI") 
 
     with col2:
-        st.markdown('<div class="card">', unsafe_allow_html=True)
-        st.subheader("❤️ ¿Por qué me gustas?")
-        st.write(f"En estos {dias_juntos} días he aprendido que:")
-        st.write("* Tus abrazos son mi lugar favorito.")
-        st.write("* Nadie me hace reír como tú.")
-        st.write("* Eres mi apoyo incondicional.")
-        st.write("* Te deseo.")
-        st.write("* Eres la mamá de Rayo jaja.")
-        st.write("* No dejo de pensar en ti.")
-        st.write("* Quiero ser feliz contigo:).")
-        st.write("* Tenemos una historia por escribir juntos.")
-        st.markdown('</div>', unsafe_allow_html=True)
-        
-        if lottie_love:
-            st_lottie(lottie_love, height=200)
+        st.markdown(f'''<div class="card">
+            <div class="card-title">Un video para ti</div>
+        </div>''', unsafe_allow_html=True)
+        try:
+            video_file = open('mi_video.mp4', 'rb')
+            video_bytes = video_file.read()
+            st.video(video_bytes)
+        except:
+            st.warning("Asegúrate de que 'mi_video.mp4' esté en tu carpeta de GitHub ❤️")
 
-    st.markdown(f"<h3 style='text-align: center; color: #d11141;'>¡Nos vemos mañana para celebrar el día {dias_juntos + 1}!</h3>", unsafe_allow_html=True)
+        st.markdown(f'''<div class="card" style="margin-top: 20px;">
+            <div class="card-title">Mensaje Secreto</div>
+        </div>''', unsafe_allow_html=True)
+        with st.expander("Haz clic para leer..."):
+            st.write("Amor, feliz día. Sé que hemos pasado por momentos difíciles últimamente, pero te sigo eligiendo hoy y todos los días. Gracias por querer luchar por lo nuestro junto a mí. Hagamos que este día sea un recordatorio de por qué empezamos y de todo lo bueno que nos falta vivir. Te quiero mucho")
+
+    with col3:
+        st.markdown(f'''<div class="card">
+            <div class="card-title">¿Por qué tú?</div>
+            <div class="card-text">
+                • Tus abrazos son mi lugar favorito.<br>
+                • Nadie me hace reír como tú.<br>
+                • Eres mi apoyo incondicional.<br>
+                • Te deseo.<br>
+                • Eres la mamá de Rayo jaja.<br>
+                • No dejo de pensar en ti.<br>
+                • Quiero ser feliz contigo :).
+            </div>
+        </div>''', unsafe_allow_html=True)
+
+    if lottie_love:
+        st_lottie(lottie_love, height=150)
+
+    st.markdown(f"<p class='titulo' style='font-size: 25px !important;'>¡Nos vemos mañana para el día {dias_juntos + 1}!</p>", unsafe_allow_html=True)
