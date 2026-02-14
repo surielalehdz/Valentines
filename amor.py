@@ -17,44 +17,37 @@ st.markdown(f"""
         background-color: #ffe4e1;
         background-image: url("https://www.transparenttextures.com/patterns/hearts.png");
     }}
+    /* Título más grande y con sombra para que resalte */
     .titulo {{
-        font-size: 35px !important; /* Ajustado para móvil */
-        font-weight: bold;
-        color: #d11141;
+        font-size: 42px !important;
+        font-weight: 800;
+        color: #b00020; /* Un rojo más fuerte para lectura */
         text-align: center;
-        margin-bottom: 10px;
+        text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+        margin-bottom: 5px;
     }}
+    /* Texto del contador en color oscuro */
     .contador {{
-        font-size: 18px;
-        color: #8b0000;
+        font-size: 20px;
+        color: #5d001e;
         text-align: center;
         margin-bottom: 30px;
-        font-style: italic;
+        font-weight: 600;
     }}
-    /* Contenedor para centrar botón */
-    .centrar {{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-    }}
-    div.stButton > button {{
-        background-color: #ff1493 !important;
-        color: white !important;
-        font-size: 22px !important;
-        font-weight: bold !important;
-        padding: 15px 40px !important;
-        border-radius: 50px !important;
-        border: 3px solid white !important;
-        box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
-    }}
+    /* Ajuste de las tarjetas para que el texto adentro sea legible */
     .card {{
-        background: white;
-        padding: 15px;
+        background: rgba(255, 255, 255, 0.95); /* Blanco sólido */
+        padding: 20px;
         border-radius: 15px;
-        box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+        box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
         margin-bottom: 20px;
-        color: #333;
+        color: #1a1a1a !important; /* Texto casi negro para máximo contraste */
+        line-height: 1.6; /* Espaciado entre líneas */
+    }}
+    /* Forzar color negro en las listas de col2 */
+    .stMarkdown p, .stMarkdown li {{
+        color: #1a1a1a !important;
+        font-size: 17px !important;
     }}
     </style>
     """, unsafe_allow_html=True)
