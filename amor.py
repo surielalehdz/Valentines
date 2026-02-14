@@ -64,7 +64,7 @@ st.markdown(f"""
 
     /* Texto interno (incluye listas y mensajes) en NEGRO */
     .card-text, .stMarkdown p, .stMarkdown li {{
-        color: #000000 !important;
+        color: #d11141 !important;
         font-size: 16px;
         line-height: 1.4;
     }}
@@ -141,6 +141,7 @@ else:
         st_lottie(lottie_love, height=150)
 
     st.markdown(f"<p class='titulo' style='font-size: 25px !important;'>¡Nos vemos mañana para el día {dias_juntos + 1}!</p>", unsafe_allow_html=True)
+
 
 
 
