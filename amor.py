@@ -16,51 +16,64 @@ st.markdown(f"""
         background-color: #ffe4e1;
         background-image: url("https://www.transparenttextures.com/patterns/hearts.png");
     }}
-    /* Títulos Principales - Restaurado el color original */
+    
+    /* Título Principal Gigante */
     .titulo {{
-        font-size: 35px !important;
-        font-weight: bold;
-        color: #d11141; /* Tu rojo original */
+        font-size: 45px !important;
+        font-weight: 900;
+        color: #d11141 !important;
         text-align: center;
-        margin-bottom: 10px;
+        margin-bottom: 5px;
+        text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
     }}
+    
     .contador {{
-        font-size: 18px;
+        font-size: 20px;
         color: #8b0000;
         text-align: center;
         margin-bottom: 30px;
         font-style: italic;
+        font-weight: 600;
     }}
-    /* Tarjetas Blancas */
+
+    /* Tarjetas */
     .card {{
         background: white;
-        padding: 20px;
-        border-radius: 15px;
-        box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+        padding: 25px;
+        border-radius: 20px;
+        box-shadow: 4px 4px 15px rgba(0,0,0,0.1);
         margin-bottom: 20px;
     }}
-    /* Títulos de las tarjetas - Restaurado color rosa/rojo */
-    .card h3, .card h2, .card h1 {{
-        color: #d11141 !important;
+
+    /* Títulos de las tarjetas - ROSA FUERTE Y GRANDES */
+    .card h1, .card h2, .card h3, .card h4 {{
+        color: #ff1493 !important; /* Rosa fuerte tipo DeepPink */
+        font-size: 28px !important;
+        font-weight: 800 !important;
+        margin-bottom: 15px !important;
     }}
-    /* ESTA ES LA PARTE CLAVE: Texto interno en color oscuro para legibilidad */
-    .stMarkdown p, .stMarkdown li, .stMarkdown span {{
-        color: #2c2c2c !important; /* Gris muy oscuro, casi negro */
-        font-size: 17px !important;
-        font-weight: 500;
+
+    /* Texto de los mensajes y listas - OSCURO PARA LEER BIEN */
+    .stMarkdown p, .stMarkdown li {{
+        color: #333333 !important;
+        font-size: 18px !important;
+        line-height: 1.5 !important;
+        font-weight: 400 !important;
     }}
-    /* Botón Centrado */
+
     .centrar {{
         display: flex;
         justify-content: center;
         width: 100%;
     }}
+
     div.stButton > button {{
         background-color: #ff1493 !important;
         color: white !important;
-        font-size: 22px !important;
+        font-size: 24px !important;
+        font-weight: bold !important;
+        padding: 18px 50px !important;
         border-radius: 50px !important;
-        padding: 15px 40px !important;
         border: 3px solid white !important;
     }}
     </style>
@@ -132,4 +145,4 @@ else:
     if lottie_love:
         st_lottie(lottie_love, height=200)
 
-    st.markdown(f"<h3 style='text-align: center; color: #d11141;'>¡Nos vemos mañana para celebrar el día {dias_juntos + 1}!</h3>", unsafe_allow_html=True)
+    st.markdown(f"<h1 style='text-align: center; color: #ff1493; font-weight: 900;'>¡Nos vemos mañana para celebrar el día {dias_juntos + 1}!</h1>", unsafe_allow_html=True)
